@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenStreetMap and GeoServer WMS</title>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v4.2.0/build/ol.js"></script>
+    <style type="text/css">
+      html { height: 100% }
+      body { 
+        height: 100%; 
+        margin: 20px; 
+        }
+      .map {
+        border: 1px solid black;
+        width: 800px;
+        height: 550px;
+        }  
+    </style>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <script>
+      var layers = [
+        new ol.layer.Tile({
+          source: new ol.source.TileWMS({
+            url: 'http://localhost:8080/geoserver/wms',
+            params: {'LAYERS': 'myLayerGroup', 'TILED': true},
+            ratio: 1,
+            serverType: 'geoserver'
+          })
+        })
+      ];
+      var map = new ol.Map({
+        layers: layers,
+        target: 'map',
+        view: new ol.View({
+          projection: 'EPSG:4326',
+          center: [-75, 45],
+          zoom: 7
+        })
+      });
+    </script>
+  </body>
+</html>

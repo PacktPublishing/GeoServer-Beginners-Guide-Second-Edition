@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WFS - GetFeature</title>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v4.2.0/build/ol.js"></script>
+    <style type="text/css">
+      html { height: 100% }
+      body { 
+        height: 100%; 
+        margin: 20px; 
+        }
+      .map {
+        border: 1px solid black;
+        width: 800px;
+        height: 550px;
+        }  
+    </style>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <script>
+      var vectorSource = new ol.source.Vector();
+      var riverLayer = new ol.layer.Vector({
+        source: vectorSource,
+        style: new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: 'rgba(0, 0, 255, 1.0)',
+            width: 3
+          })
+        })
+      });
+
+      var baseMap = new ol.layer.Tile({
+        source: new ol.source.OSM()
+      });
+      var placesLayer = new ol.layer.Image({
+          source: new ol.source.ImageWMS({
+            url: 'http://localhost:8080/geoserver/wms',
+            params: {'LAYERS': 'Packt:ne_50m_populated_places'},
+            ratio: 1,
+            serverType: 'geoserver'
+          }),
+          opacity: 0.7
+        })
+
+      var map = new ol.Map({
+        layers: [ baseMap, placesLayer, riverLayer],
+        target: document.getElementById('map'),
+        view: new ol.View({
+          projection: 'EPSG:4326'
+        })
+      });
+
+      var featureRequest = new ol.format.WFS().writeGetFeature({
+        srsName: 'EPSG:4326',
+        featureNS: 'https://www.packtpub.com/',
+        featurePrefix: 'Packt',
+        featureTypes: ['rivers'],
+        outputFormat: 'application/json',
+        filter: ol.format.filter.or(
+          ol.format.filter.equalTo('name', 'Amazon'),
+          ol.format.filter.equalTo('name', 'Mississipi')
+        )
+      });
+
+      fetch('http://localhost:8080/geoserver/wfs', {
+        method: 'POST',
+        body: new XMLSerializer().serializeToString(featureRequest)
+      }).then(function(response) {
+        return response.json();
+      }).then(function(json) {
+        var features = new ol.format.GeoJSON().readFeatures(json);
+        vectorSource.addFeatures(features);
+        map.getView().fit(vectorSource.getExtent());
+      });
+    </script>
+  </body>
+</html>
+

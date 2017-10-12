@@ -5,11 +5,11 @@ GeoServer is an open-source server written in Java that allows users to share, p
 
 
 ## Instructions and Navigation
-All of the code is organized into folders. Each folder starts with a number followed by the application name. For example, Chapter02.
+All of the code is organized into folders. Each folder starts with a number followed by the application name. For example, Chapter04.
 
 All the code files are present in their respective code folders.
 
-Chapters 2, 3, and 10 do not have any code files.
+Chapters 02, 03, and 10 do not have any code files.
 
 
 The code will look like the following:

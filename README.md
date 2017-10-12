@@ -1,15 +1,15 @@
-# GeoServer Beginner’s Guide - Second Edition
+﻿# GeoServer Beginner’s Guide - Second Edition
 This is the code repository for [GeoServer Beginner’s Guide - Second Edition](https://www.packtpub.com/application-development/geoserver-beginner’s-guide-second-edition?utm_source=github&utm_medium=repository&utm_campaign=9781788297370), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the book from start to finish.
 ## About the Book
 GeoServer is an open-source server written in Java that allows users to share, process, and edit geospatial data. This book will guide you through the new features and improvements of GeoServer and will help you get started with it. GeoServer Beginner's Guide gives you a kick-start to build custom maps using your data without the need for costly commercial software licenses and restrictions. Even if you do not have prior GIS knowledge, you will be able to make interactive maps after reading this book.
 
 
 ## Instructions and Navigation
-All of the code is organized into folders. Each folder starts with a number followed by the application name. For example, Chapter02.
+All of the code is organized into folders. Each folder starts with a number followed by the application name. For example, Chapter04.
 
 All the code files are present in their respective code folders.
 
-Chapters 2, 3, and 10 do not have any code files.
+Chapters 02, 03, and 10 do not have any code files.
 
 
 The code will look like the following:

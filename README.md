@@ -33,5 +33,4 @@ Installation and download instructions are described for all the software packag
 
 * [GeoServer Beginner's Guide](https://www.packtpub.com/application-development/geoserver-beginner’s-guide?utm_source=github&utm_medium=repository&utm_campaign=9781849516686)
 
-### Suggestions and Feedback
-[Click here](https://docs.google.com/forms/d/e/1FAIpQLSe5qwunkGf6PUvzPirPDtuy1Du5Rlzew23UBp2S-P3wB-GcwQ/viewform) if you have any feedback or suggestions.
+
